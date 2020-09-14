@@ -1,0 +1,12 @@
+import pandas as pd
+import numpy as np
+
+all_data = pd.DataFrame()
+
+df = pd.read_excel("datasets/datasets/weekly_call_data/weekdata_000.xlsx")
+all_data = all_data.append(df,ignore_index=True)
+
+df = pd.read_excel("datasets/datasets/weekly_call_data/weekdata_001.xlsx")
+all_data = all_data.append(df,ignore_index=True)
+
+all_data.describe()
