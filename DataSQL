@@ -1,0 +1,24 @@
+import pandas as pd
+from sqlalchemy import create_engine
+db_file = r'datasets/datasets/salesdata.db'
+engine = create_engine(r"sqlite:///{}"
+		.format(db_file))
+sql = "select name from sqlite_master where type = 'table';"
+sales_data_df = pd.read_sql(sql, engine)
+print(sales_data_df)
+
+sql = "select * from scores"
+sales_data_df = pd.read_sql(sql, engine)
+print(sales_data_df)
+
+sql = "select * from scores where Intelligence > 100"
+sales_data_df = pd.read_sql(sql, engine)
+print(sales_data_df)
+
+sql = 'select * from scores where "Sales Person" = 5'
+sales_data_df = pd.read_sql(sql, engine)
+print(sales_data_df)
+
+sql = 'select * from scores where "$ Sales/Week" > 3500'
+sales_data_df = pd.read_sql(sql, engine)
+print(sales_data_df)
