@@ -1,0 +1,20 @@
+import os
+import sqlite3 as lite
+import pandas as pd
+
+all_data = pd.DataFrame()
+df = pd.read_csv("datasets/datasets/gradedata.csv")
+all_data = all_data.append(df,ignore_index=True)
+all_data.describe()
+
+db_filename = r'gradedata.db'
+con = lite.connect(db_filename)
+all_data.to_sql('mytable',
+	con,
+	schema=None,
+	if_exists='replace',
+	index=True,
+	index_label=None,
+	chunksize=None,
+	dtype=None)
+con.close()
