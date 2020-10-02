@@ -1,0 +1,20 @@
+import pandas as pd
+
+Location = "datasets/datasets/gradedata.csv"
+df = pd.read_csv(Location)
+df.head()
+
+bins = [0, 60, 70, 80, 90, 100]
+group_names = ['F', 'D', 'C', 'B', 'A']
+df['letterGrades'] = pd.cut(df['grade'],
+		bins, labels=group_names)
+bins = [0, 70, 100]
+group_names = ['failing', 'passing']
+df['status'] = pd.cut(df['grade'],
+		bins, labels=group_names)
+df.head()
+gendergrouped = df[df['gender']=='female'].groupby(['status'],)['exercise']
+print(gendergrouped.get_group('passing').mean())
+print(df)
+print(df[df['grade'] == 70]) #check if working precisely for grades of 70
+

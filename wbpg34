@@ -1,0 +1,16 @@
+import pandas as pd
+
+Location = "datasets/datasets/gradedata.csv"
+df = pd.read_csv(Location)
+df.head()
+
+bins = [0,60,70,80,90,100]
+passorfail = ['Fail', 'Fail', 'Fail', 'Pass', 'Pass']
+group_names = ['F','D','C','B','A']
+
+df['lettergrade'] = pd.cut(df['grade'], bins,
+		labels=group_names)
+df['passorfail'] = pd.cut(df['grade'], bins,
+		labels=passorfail, ordered=False)
+df
+print(df)
