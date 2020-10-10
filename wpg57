@@ -1,0 +1,20 @@
+import pandas as pd
+
+names = ['Bob','Jessica','Mary','John','Mel']
+grades = [76,95,77,78,99]
+bsdegrees = [1,1,0,0,1]
+msdegrees = [2,1,0,0,0]
+phddegrees = [0,1,0,0,0]
+columns = ['Names','Grades','BSDegrees','MSDegrees','PhDDegrees']
+
+GradeList = zip(names,grades,bsdegrees,msdegrees,phddegrees)
+df = pd.DataFrame(data=GradeList,
+		columns=columns)
+df
+print("Mean of Grades: ", df['Grades'].mean())
+print("Mode of MSDegrees: ", df['MSDegrees'].mode())
+print("Max Number of MSDegrees: ", df['MSDegrees'].max())
+print("Second Quartile of BSDegrees: ", df['BSDegrees'].quantile(.5))
+print("Mean of PhDDegrees: ", df['PhDDegrees'].mean())
+print("MEan of BSDegrees", df['BSDegrees'].mean())
+print("Variance of Number stats: \n", df.var())
