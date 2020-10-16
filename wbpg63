@@ -1,0 +1,22 @@
+import pandas as pd
+import statsmodels.formula.api as sm
+
+Location = "datasets/datasets/gradedata.csv"
+df = pd.read_csv(Location)
+print(df.head())
+
+df['numeric_gender'] = df['gender']
+df['numeric_gender'].replace(['female','male'],[0,1],inplace=True)
+print(df.head())
+
+result = sm.ols(
+		formula='grade ~ age + exercise + hours',
+		data=df).fit()
+print(result.summary())
+
+result = sm.ols(
+		formula='grade ~ age + exercise + hours + numeric_gender',
+		data=df).fit()
+print(result.summary())
+
+#R-squared improved by .001, Adj. R-squared did not improve
