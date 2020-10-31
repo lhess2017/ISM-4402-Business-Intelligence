@@ -1,0 +1,9 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib.inline
+Location = "datasets/datasets/gradedata.csv"
+df = pd.read_csv(Location)
+plt.scatter(df['hours'], df['grade'])
+plt.show()
+#Clear upward trend
