@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-#%matplotlib inline
+%matplotlib inline
 names = ['Bob','Jessica','Mary','John','Mel']
 absences = [3,0,1,0,8]
 detentions = [2,1,0,0,1]
