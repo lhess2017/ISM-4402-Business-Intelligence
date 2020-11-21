@@ -1,0 +1,30 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+Location = "datasets/datasets/axisdata.csv"
+df = pd.read_csv(Location)
+df.head
+
+df['Cars Sold'].sum()
+#or df['Cars Sold'].mean() if the wording is off?
+df['Cars Sold'].max()
+df['Cars Sold'].min()
+pd.pivot_table(df,
+		values=['Cars Sold'],
+		index=['Gender'])
+df2 = df.loc[df['Cars Sold'] > 3]
+df2['Hours Worked'].mean()
+df['Years Experience'].mean()
+df2['Years Experience'].mean()
+df = df.sort_values(by='SalesTraining',
+		ascending=False)
+df[['Cars Sold', 'SalesTraining']]
+plt.scatter(df['Hours Worked'], df['Cars Sold'])
+plt.show()
+pd.pivot_table(df,
+			values=['Cars Sold'],
+			index=['SalesTraining'])
+axis1 = df.boxplot(by='Gender', column='Cars Sold')
+axis1.set_ylim(0,8)
+plt.show()
